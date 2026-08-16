@@ -1,0 +1,37 @@
+{
+  "name": "THANUVA-MD",
+  "description": "THANUVA-MD — WhatsApp automation bot built on Baileys",
+  "repository": "https://github.com/ThanujaDilshan-LK/THANUVA-MD",
+  "keywords": ["whatsapp", "bot", "baileys", "nodejs"],
+  "stack": "heroku-22",
+  "buildpacks": [
+    { "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git" },
+    { "url": "heroku/nodejs" }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "env": {
+    "SESSION_ID": {
+      "description": "Your THANUVA-MD WhatsApp session ID — generate this first from the pair/QR linking site (starts with THANUVA-MD~...)",
+      "required": true
+    },
+    "PREFIX": {
+      "description": "Command prefix for the bot (e.g. . or !)",
+      "value": ".",
+      "required": false
+    },
+    "OWNER_NUMBER": {
+      "description": "Bot owner's WhatsApp number with country code, digits only (no + or spaces)",
+      "required": false
+    },
+    "NODE_ENV": {
+      "description": "Runtime environment",
+      "value": "production",
+      "required": false
+    }
+  }
+}
