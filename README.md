@@ -1,243 +1,172 @@
-# 🤖 Knight Bot
+# 🤖 THANUVA-MD
 
-This is a WhatsApp bot built using the Baileys library for group management, including features like tagging all members, muting/unmuting, and many more. It's designed to help admins efficiently manage WhatsApp groups.
+A fast, lightweight WhatsApp bot built on the **Baileys** multi-device API. THANUVA-MD helps group admins manage large WhatsApp groups — tagging, moderation, anti-link/anti-badword protection, fun commands, an AI chatbot mode, and more — all from a clean, self-hosted codebase.
 
-<div align="center"> 
-  <a href="https://git.io/typing-svg"> 
-    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=50&pause=1000&color=33ff00&center=true&width=910&height=100&lines=Knight-Bot;Multi+Device+Whatsapp+Bot;Coded+By+Professor" alt="Typing SVG" />
-  </a> 
-</div> 
-
-<div align="center"> 
-  <a href="https://youtube.com/@mr_unique_hacker"> 
-    <img src="https://github.com/mruniquehacker/Knightbot-MD/blob/main/assets/bot_image.jpg" alt="Knight Bot" height="300"> 
-  </a> 
+<div align="center">
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.demolab.com?font=Ribeye&size=40&pause=1000&color=33FF00&center=true&width=910&height=80&lines=THANUVA-MD;Multi+Device+WhatsApp+Bot;Coded+by+ThanujaDilshan-LK" alt="Typing SVG" />
+  </a>
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/github/followers/mruniquehacker?style=for-the-badge&label=Followers" alt="Followers"/>
-  <img src="https://img.shields.io/github/stars/mruniquehacker/Knightbot-MD?style=for-the-badge&label=Stars" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/mruniquehacker/Knightbot-MD?style=for-the-badge&label=Forks" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/mruniquehacker/Knightbot-MD?style=for-the-badge&label=Watchers" alt="Watchers"/>
+  <img src="https://graph.org/file/2f079999836bfa072c08f-5237c92150c3f87539.jpg" alt="THANUVA-MD" height="280">
 </div>
-
----
-<div>
-  <a href="https://www.rapidproxy.io/?ref=Knightbot" target="_blank">
-    <img src="assets/rapid.jpg" alt="RapidProxy" width="100%" />
-  </a>
-</div>
-
-<br>
-
-<div align="left">
-  <a href="https://www.rapidproxy.io/?ref=Knightbot" target="_blank"><b>RapidProxy</b></a> delivers fast, reliable proxy infrastructure for large-scale data operations. With high concurrency, non-expiring traffic, and AI-powered CAPTCHA bypass, it ensures efficient, uninterrupted data collection—trusted by developers worldwide.<br><br>
-  90M+ Residential IPs • Smart Rotation • High Success Rate • Built for Scale<br><br>
-  <b>Special Offer:</b> <a href="https://www.rapidproxy.io/?ref=Knightbot" target="_blank">Try it free</a> — Pricing from $0.65/GB with non-expiring traffic. Use code <b>RAPID10</b> for 10% off.
-</div>
-
-<br>
-
-<div align="left">
-  <a href="https://www.rapidproxy.io/?ref=Knightbot" target="_blank">
-    <img src="https://img.shields.io/badge/Try now-28a745?style=for-the-badge" alt="Try now"/>
-  </a>
-</div>
-
-
-## 🚀 Steps to Deploy Bot
-
-### Step 1: Fork the Repository
-
-Click the button below to fork the Knight Bot repository to your GitHub account:
 
 <div align="center">
-  <a href="https://github.com/mruniquehacker/Knightbot-MD/fork">
-    <img src="https://img.shields.io/badge/Fork-Repository-blue?style=for-the-badge" alt="Fork the repository"/>
-  </a>
+
+![Followers](https://img.shields.io/github/followers/ThanujaDilshan-LK?style=for-the-badge&label=Followers)
+![Stars](https://img.shields.io/github/stars/ThanujaDilshan-LK/THANUVA-MD?style=for-the-badge&label=Stars)
+![Forks](https://img.shields.io/github/forks/ThanujaDilshan-LK/THANUVA-MD?style=for-the-badge&label=Forks)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen?style=for-the-badge&logo=node.js)
+
 </div>
 
 ---
 
-### Step 2: Get Pair Code
+## 🚀 Quick Deploy
 
-Deploy the bot and easily connect it to your WhatsApp account by pair code. Click the button below to deploy the bot on Replit.
+Pick whichever platform you're using — all three run this repo out of the box (`npm install && npm start`).
 
 <div align="center">
-  <a href="https://knight-bot-paircode.onrender.com" target="_blank">
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new?template=https://github.com/ThanujaDilshan-LK/THANUVA-MD)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ThanujaDilshan-LK/THANUVA-MD)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/ThanujaDilshan-LK/THANUVA-MD)
+
+</div>
+
+> ⚠️ Heroku no longer has a free tier — you'll need an Eco/Basic dyno. On Heroku, scale the **worker** dyno (`heroku ps:scale worker=1`), not `web`, since this bot doesn't listen on an HTTP port.
+> Railway/Render are recommended if you want persistent disk for the `session/` folder across restarts.
+
+---
+
+## 🔗 Step-by-step Setup
+
+### 1. Fork this repository
+
+<div align="center">
+  <a href="https://github.com/ThanujaDilshan-LK/THANUVA-MD/fork">
+    <img src="https://img.shields.io/badge/Fork-Repository-blue?style=for-the-badge&logo=github" alt="Fork the repository"/>
+  </a>
+</div>
+
+### 2. Get your Session ID / Pair Code
+
+Use the pairing site to link your WhatsApp number and generate a `creds.json` / Session ID:
+
+<div align="center">
+  <a href="https://YOUR-PAIR-SITE-URL.example" target="_blank">
     <img src="https://img.shields.io/badge/GET%20PAIR%20CODE-Easy%20Method-ff4d4d?style=for-the-badge" alt="Generate Pair Code"/>
   </a>
 </div>
 
+*(Replace the link above with your deployed [THANUVA-MD-Pair](https://github.com/ThanujaDilshan-LK/THANUVA-MD-Pair) site URL once it's live.)*
 
-### After getting creds.json file, upload it to session folder
+Two ways to use what you get:
+- **`creds.json` file** → drop it into the bot's `session/` folder.
+- **`SESSION_ID` string** (`THANUVA-MD~...`) → set it as an environment variable on your host — no manual file upload needed, and it survives redeploys even on platforms with ephemeral disks.
 
----
+### 3. Set environment variables
 
-### Step 3: Deploy Now
+| Variable | Required | Description |
+|---|---|---|
+| `SESSION_ID` | Recommended | Portable session string from the pair site. If set, the bot restores `session/creds.json` from this on every boot. |
+| `PORT` | No | Only needed if you add a keep-alive HTTP server; not required for the bot itself. |
 
-For further customization and setup guidance, click the button below:
+### 4. Deploy & connect
 
-<div align="center">
-  <a href="https://youtu.be/-oz_u1iMgf8">
-    <img src="https://img.shields.io/badge/Deploy Tutorial-dc3545?style=for-the-badge&logo=youtube" alt="YouTube Link"/>
-  </a>
-  <a href="https://bot-hosting.net/?aff=1068419752923508776">
-    <img src="https://img.shields.io/badge/Deploy on Panel-28a745?style=for-the-badge" alt="Deploy on Panel"/>
-  </a>
-</div>
+Use one of the Quick Deploy buttons above, or run locally:
 
-### Deploy on VPS
+```bash
+git clone https://github.com/ThanujaDilshan-LK/THANUVA-MD.git
+cd THANUVA-MD
+npm install
+npm start
+```
 
-<div align="center">
-  <a href="https://client.petrosky.io/aff.php?aff=394" target="_blank">
-    <img src="https://img.shields.io/badge/petrosky vps-0078E7?style=for-the-badge" alt="petrosky vps"/>
-  </a>
-</div>
-
-### Deploy on Below Panel
-<div align="center">
-<a href="https://dashboard.katabump.com/auth/login#d6b7d6" target="_blank">
-  <img src="https://img.shields.io/badge/Katabump-D6B7D6?style=for-the-badge&logo=server&logoColor=black" alt="Katabump"/>
-</a>
-</div>
-
-### Join Us
-
-<div align="center">
-  <a href="https://t.me/+3QhFUZHx-nhhZmY1">
-    <img src="https://img.shields.io/badge/Join%20Telegram-0078E7?style=for-the-badge&logo=telegram&logoColor=white" alt="Join Telegram"/>
-  </a>
-  <a href="https://whatsapp.com/channel/0029Va90zAnIHphOuO8Msp3A">
-    <img src="https://img.shields.io/badge/Join%20WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Join WhatsApp"/>
-  </a>
-</div>
+Once running, the console prints a pairing code (or QR, depending on config) — link it from **WhatsApp → Settings → Linked Devices**.
 
 ---
 
 ## ⚙️ Features
 
-- **Tag all group members** with the `.tagall` command
-- **Admin restricted usage** (Only group admins can use certain commands)
-- **Games** like Tic-Tac-Toe for interactive group engagement
-- **Text-to-Speech** with `.tts`
-- **Sticker creation** with `.sticker`
-- **Anti-link detection** for group safety
-- **Warn and manage group members** with admin control
+**Group Management**
+- `.tagall` — tag every member in the group
+- `.ban` / `.clear` — moderation tools for admins
+- `.antilink` — auto-remove links from non-admins
+- `.antibadword` — filter bad language
+- `.antitag`, `.anticall`, `.antidelete` — extra group protections
+
+**Utility & Automation**
+- `.autoread`, `.autotyping`, `.autostatus` — presence automation
+- `.clearsession`, `.cleartmp` — maintenance commands
+- `SESSION_ID` env-var support for persistent sessions across redeploys
+
+**Fun & AI**
+- `.chatbot` — built-in AI chat persona
+- `.character`, `.compliment`, `.dare`, `.anime` — fun commands
+- `.sticker`, `.attp` — sticker/animated-text-to-sticker creation
+- Tic-Tac-Toe and other mini-games
+
+**Admin-only command mode** — restrict sensitive commands to group admins or bot owners (`.sudo` for multi-owner access).
 
 ---
 
-## 📖 About
-
-The Knight WhatsApp Bot assists group admins by providing them with tools to efficiently manage large WhatsApp groups. The bot uses the Baileys library to interact with the WhatsApp Web API and supports multi-device features.
-
-It is lightweight and can be easily customized to add more commands as per your requirements. The bot runs in a Node.js environment and provides QR code-based authentication to link your WhatsApp account.
-
----
-
-## 🛠️ Setup & Installation
+## 🛠️ Local Development
 
 ### Prerequisites
+- Node.js ≥ 18
+- Git
 
-- Node.js installed on your system
-- Git installed (for cloning the repository)
+### Setup
 
-### Step-by-Step Setup
+```bash
+git clone https://github.com/ThanujaDilshan-LK/THANUVA-MD.git
+cd THANUVA-MD
+npm install
+npm start
+```
 
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/mruniquehacker/Knightbot-MD.git
-    cd Knightbot-MD
-    ```
-
-2. **Install the dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3. **Run the bot:**
-
-    ```bash
-    node index.js
-    ```
-
-4. **Scan the QR code:**
-
-    Once the bot starts, a QR code will appear in the terminal. Scan this QR code using the Linked Devices feature in WhatsApp to connect your WhatsApp account with the bot.
+Scan the QR code (or enter the pair code) shown in the terminal to link your WhatsApp account.
 
 ---
 
-## ☕ Support Me
+## 🌐 Related Projects
+
+- **[THANUVA-MD-Pair](https://github.com/ThanujaDilshan-LK/THANUVA-MD-Pair)** — the standalone pair-code/QR web app used in Step 2 above.
+
+---
+
+## 📢 Community
 
 <div align="center">
-
-<a href="https://buymeacoffee.com/mruniquehacker" target="_blank">
-  <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Support%20Developer-FF813F?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white" alt="Buy Me a Coffee">
-</a>
-
-</div>
-
-If you find this project helpful and want to support the developer, consider buying me a coffee! Your support helps maintain and improve this open-source project.
-
-<div align="center">
-
-<img src="assets/bmc_qr.png" alt="Buy Me a Coffee QR Code" width="200">
-
+  <a href="https://whatsapp.com/channel/0029Vb8jflCCBtxFCDITOm1J">
+    <img src="https://img.shields.io/badge/Join%20WhatsApp%20Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Join WhatsApp"/>
+  </a>
 </div>
 
 ---
 
-## 📄 License
+## 📄 License & Credits
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE](https://github.com/mruniquehacker/Knightbot-MD/blob/main/LICENSE) file for details.
+Licensed under the [MIT License](https://opensource.org/licenses/MIT). This project started as a rebrand and customization of the open-source **Knight-Bot-MD** codebase; the underlying Baileys integration and original command structure are credited to their original authors below, as required by the MIT license:
 
----
+- [Baileys](https://github.com/WhiskeySockets/Baileys) — WhatsApp Web API library
+- Original base project: Knight-Bot-MD by Professor / MR UNIQUE HACKER
 
-## 🙌 Contributions
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/mruniquehacker/Knightbot-MD/issues).
-
----
-
-## 🌟 Show your support
-
-If you like this project, please give it a [⭐️ star on GitHub](https://github.com/mruniquehacker/Knightbot)!
-
-
-## Credits
-
-- [Professor](https://github.com/mruniquehacker)
-- [Baileys](https://github.com/adiwajshing/Baileys)
-- [TechGod143](https://github.com/TechGod143) for pair code
-- [Dgxeon](https://github.com/Dgxeon) for pair code
+Copyright (c) 2026 ThanujaDilshan-LK. See individual files for any remaining third-party notices.
 
 ---
 
 ## ⚠️ Important Warning
 
-**Note:** This bot is created for educational purposes only. This is NOT an official WhatsApp bot. Using this bot may lead to your WhatsApp account being banned. Use it at your own risk. The developers will not be responsible for any consequences or account bans that may occur while using this bot.
+This bot is **not an official WhatsApp product**. It uses WhatsApp's unofficial multi-device Web API (via Baileys), which is against WhatsApp's Terms of Service to automate. Using it carries a real risk of your number being banned or rate-limited. Use at your own risk — don't use it for spam, bulk messaging, or anything illegal. The maintainers of this repo are not liable for any misuse or account action taken against you.
 
-## 📝 Legal
+---
 
-- This project is not affiliated with, authorized, maintained, sponsored or endorsed by WhatsApp or any of its affiliates or subsidiaries.
-- This is an independent and unofficial software. Use at your own risk.
-- Do not spam people with this bot.
-- Do not use this bot to send bulk messages or for illegal purposes.
-- The developers assume no liability and are not responsible for any misuse or damage caused by this program.
+## 🙌 Contributions
 
-### License
-This project is licensed under the MIT License. However, you must:
-- Use this software in compliance with all applicable laws and regulations
-- Include original license and copyright notices
-- Credit original authors
-- Not use for spam or malicious purposes
+Issues and pull requests are welcome — check the [issues page](https://github.com/ThanujaDilshan-LK/THANUVA-MD/issues).
 
-## 📜 Copyright Notice
-
-Copyright (c) 2024 Professor. All rights reserved.
-
-This project contains code from various open source projects:
-- Baileys (MIT License)
-- Other libraries as listed in package.json
+If you find this useful, consider giving it a ⭐️ on GitHub!
