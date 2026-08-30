@@ -1,16 +1,16 @@
 const settings = {
-  packname: 'Knight Bot',
-  author: '‎',
-  botName: "Knight Bot",
-  botOwner: 'Professor', // Your name
-  ownerNumber: '919876543210', //Set your number here without + symbol, just add country code & number without any space
+  packname: 'THANUVA-MD',
+  author: 'ThanujaDilshan-LK',
+  botName: "THANUVA-MD",
+  botOwner: 'ThanujaDilshan', // Your name
+  ownerNumber: '94701979812', //Set your number here without + symbol, just add country code & number without any space
   giphyApiKey: 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq',
   commandMode: "public",
   maxStoreMessages: 20, 
   storeWriteInterval: 10000,
-  description: "This is a bot for managing group commands and automating tasks.",
-  version: "3.0.7",
-  updateZipUrl: "https://github.com/mruniquehacker/Knightbot-MD/archive/refs/heads/main.zip",
+  description: "THANUVA-MD - a WhatsApp bot for managing group commands and automating tasks.",
+  version: "5.0.1",
+  updateZipUrl: "https://github.com/ThanujaDilshan-LK/THANUVA-MD/archive/refs/heads/main.zip",
 };
 
 module.exports = settings;
