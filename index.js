@@ -1,14 +1,4 @@
-/**
- * Knight Bot - A WhatsApp Bot
- * Copyright (c) 2024 Professor
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the MIT License.
- * 
- * Credits:
- * - Baileys Library by @adiwajshing
- * - Pair Code implementation inspired by TechGod143 & DGXEON
- */
+
 require('./settings')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -17,6 +7,7 @@ const FileType = require('file-type')
 const path = require('path')
 const axios = require('axios')
 const { handleMessages, handleGroupParticipantUpdate, handleStatus } = require('./main');
+const { startLicenseWatcher } = require('./license');
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize } = require('./lib/myfunc')
@@ -263,8 +254,50 @@ async function startXeonBotInc() {
 
             try {
                 const botNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
+                const connectedNumber = XeonBotInc.user.id.split(':')[0];
+                const connectedName = XeonBotInc.user.name || XeonBotInc.user.verifiedName || 'Unknown';
+                let sudoList = 'none';
+                try {
+                    const ugData = JSON.parse(fs.readFileSync('./data/userGroupData.json'));
+                    sudoList = (ugData.sudo || []).map(n => n.split('@')[0]).join(', ') || 'none';
+                } catch (e) { /* file missing on first run — keep default */ }
+
+                const startupText =
+`*THANUVA-MD :: Bot Started Successfully* ✅
+
+👋 Hello ${settings.botOwner || 'Owner'},
+Welcome to your ultimate WhatsApp bot! 🚀
+
+📱 Connected Number: wa.me/${connectedNumber}
+🪪 Connected Name: ${connectedName}
+
+🔗 *Official Resources*
+- 📦 GitHub: https://github.com/ThanujaDilshan-LK/THANUVA-MD
+- 🔑 Get Session/Pair Code: https://YOUR-PAIR-SITE-URL.example
+- 💰 Plans: https://YOUR-PAIR-SITE-URL.example/index.html (BUY tab)
+- 📖 Bot Details: https://YOUR-PAIR-SITE-URL.example/details.html
+
+💡 *System & Commands*
+- To see all commands: *.menu*
+- Check bot status: *.alive*
+- Add/remove owners: *.sudo*
+- Post to channel: *.channelpost*
+
+⚙️ *Current Configuration*
+- Prefix: .
+- Mode: ${settings.commandMode || 'public'}
+- Name: ${global.botname || 'THANUVA-MD'}
+- Version: ${settings.version}
+- Owner: ${owner?.join(', ') || 'not set'}
+- Sudo: ${sudoList}
+
+⏰ Time: ${new Date().toLocaleString()}
+✅ Status: Online and Ready!
+
+Make sure to join our channel below 👇`;
+
                 await XeonBotInc.sendMessage(botNumber, {
-                    text: `🤖 Bot Connected Successfully!\n\n⏰ Time: ${new Date().toLocaleString()}\n✅ Status: Online and Ready!\n\n✅Make sure to join below channel`,
+                    text: startupText,
                     contextInfo: {
                         forwardingScore: 1,
                         isForwarded: true,
@@ -277,6 +310,13 @@ async function startXeonBotInc() {
                 });
             } catch (error) {
                 console.error('Error sending connection message:', error.message)
+            }
+
+            try {
+                const licenseBotNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
+                startLicenseWatcher(XeonBotInc, licenseBotNumber);
+            } catch (error) {
+                console.error('Error starting license watcher:', error.message)
             }
 
             await delay(1999)
