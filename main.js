@@ -104,6 +104,11 @@ const { handlePromotionEvent } = require('./commands/promote');
 const { handleDemotionEvent } = require('./commands/demote');
 const viewOnceCommand = require('./commands/viewonce');
 const clearSessionCommand = require('./commands/clearsession');
+const channelPostCommand = require('./commands/channelpost');
+const getChannelJidCommand = require('./commands/getchanneljid');
+const { setupCommand, settingsCommand: cfgSetCommand, applyCommand, myenvCommand } = require('./commands/setup');
+const changelogCommand = require('./commands/changelog');
+const { addCmdCommand, delCmdCommand, resetCmdCommand, getCmdCommand, matchCustomCommand } = require('./commands/customcmd');
 const { autoStatusCommand, handleStatusUpdate } = require('./commands/autostatus');
 const { simpCommand } = require('./commands/simp');
 const { stupidCommand } = require('./commands/stupid');
@@ -827,6 +832,40 @@ async function handleMessages(sock, messageUpdate, printLog) {
             case userMessage === '.clearsession' || userMessage === '.clearsesi':
                 await clearSessionCommand(sock, chatId, message);
                 break;
+            case userMessage.startsWith('.channelpost'):
+                const channelPostArgs = userMessage.split(' ').slice(1);
+                await channelPostCommand(sock, chatId, message, channelPostArgs, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.getchanneljid':
+                await getChannelJidCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.setup':
+                await setupCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage.startsWith('.cfgset'):
+                await cfgSetCommand(sock, chatId, message, userMessage.split(' ').slice(1), isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.apply':
+                await applyCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.myenv':
+                await myenvCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.changelog':
+                await changelogCommand(sock, chatId, message);
+                break;
+            case userMessage.startsWith('.addcmd'):
+                await addCmdCommand(sock, chatId, message, userMessage, isOwnerOrSudoCheck);
+                break;
+            case userMessage.startsWith('.delcmd'):
+                await delCmdCommand(sock, chatId, message, userMessage, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.resetcmd':
+                await resetCmdCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.getcmd':
+                await getCmdCommand(sock, chatId, message);
+                break;
             case userMessage.startsWith('.autostatus'):
                 const autoStatusArgs = userMessage.split(' ').slice(1);
                 await autoStatusCommand(sock, chatId, message, autoStatusArgs);
@@ -1164,6 +1203,13 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 await soraCommand(sock, chatId, message);
                 break;
             default:
+                if (userMessage.startsWith('.')) {
+                    const handledByCustomCmd = await matchCustomCommand(sock, chatId, message, userMessage);
+                    if (handledByCustomCmd) {
+                        commandExecuted = true;
+                        break;
+                    }
+                }
                 if (isGroup) {
                     // Handle non-command group messages
                     if (userMessage) {  // Make sure there's a message
