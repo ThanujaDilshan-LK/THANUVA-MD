@@ -8,6 +8,7 @@ const path = require('path')
 const axios = require('axios')
 const { handleMessages, handleGroupParticipantUpdate, handleStatus } = require('./main');
 const { startLicenseWatcher } = require('./license');
+const { announceUpdateIfNew } = require('./commands/announce');
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize } = require('./lib/myfunc')
@@ -315,6 +316,7 @@ Make sure to join our channel below 👇`;
             try {
                 const licenseBotNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
                 startLicenseWatcher(XeonBotInc, licenseBotNumber);
+                announceUpdateIfNew(XeonBotInc).catch(e => console.error('[announce] error:', e.message));
             } catch (error) {
                 console.error('Error starting license watcher:', error.message)
             }
