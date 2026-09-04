@@ -106,6 +106,9 @@ const viewOnceCommand = require('./commands/viewonce');
 const clearSessionCommand = require('./commands/clearsession');
 const channelPostCommand = require('./commands/channelpost');
 const getChannelJidCommand = require('./commands/getchanneljid');
+const menuCommand = require('./commands/menu');
+const voiceCommand = require('./commands/voice');
+const { addAnnounceGroupCommand, removeAnnounceGroupCommand, listAnnounceGroupsCommand } = require('./commands/announcegroup');
 const { setupCommand, settingsCommand: cfgSetCommand, applyCommand, myenvCommand } = require('./commands/setup');
 const changelogCommand = require('./commands/changelog');
 const { addCmdCommand, delCmdCommand, resetCmdCommand, getCmdCommand, matchCustomCommand } = require('./commands/customcmd');
@@ -838,6 +841,22 @@ async function handleMessages(sock, messageUpdate, printLog) {
                 break;
             case userMessage === '.getchanneljid':
                 await getChannelJidCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.menu2':
+                await menuCommand(sock, chatId, message);
+                break;
+            case userMessage.startsWith('.voice'):
+                const voiceArgs = userMessage.split(' ').slice(1);
+                await voiceCommand(sock, chatId, message, voiceArgs);
+                break;
+            case userMessage === '.addannouncegroup':
+                await addAnnounceGroupCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.rmannouncegroup':
+                await removeAnnounceGroupCommand(sock, chatId, message, isOwnerOrSudoCheck);
+                break;
+            case userMessage === '.announcegroups':
+                await listAnnounceGroupsCommand(sock, chatId, message, isOwnerOrSudoCheck);
                 break;
             case userMessage === '.setup':
                 await setupCommand(sock, chatId, message, isOwnerOrSudoCheck);
